@@ -12,18 +12,18 @@
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
+    <link href="../css/registro.css" rel="stylesheet" />
 </head>
 
 <body>
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" class="nav-link" onclick="todosLosProductos()">Todos Los Productos</a>
+            <a href= "../index.html" class="navbar-brand" class="nav-link" onclick="todosLosProductos()">Todos Los Productos</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                     <li class="nav-item"><a class="nav-link" onclick="categoriasProductos('pintureria')">Pintureria</a>
                     </li>
@@ -43,21 +43,17 @@
                             </ul>
                         </li> -->
                 </ul>
-                <div class="d-flex justify-content-evenly">
-                    
+                <div class="d-flex">
+                
                     <button class="btn  btn-outline-dark" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="generarCardsCarrito()">
                         <i class="bi-cart-fill me-1"></i>
                         Cart
                         <span id="cart-total" class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                     </button>
-
-                    <button class="btn  btn-outline-dark   " type="button"  data-bs-target="#exampleModal" >
-                       <a class=" text-dark me-1" href="/pages/Registro.html">Login/registro</a>
-                        <!-- <span id="cart-total" class="badge bg-dark text-white ms-1 rounded-pill">0</span> -->
-                    </button>
+                    
 
                 </div>
-            </div>
+            </div> -->
         </div>
     </nav>
     <!-- Header-->
@@ -139,7 +135,7 @@
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
-    <script src="scripts.js"></script>
+    <script src="registro.js"></script>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <!-- aos -->

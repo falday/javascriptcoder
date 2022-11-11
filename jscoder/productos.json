@@ -1,0 +1,81 @@
+[
+    {
+        "codigo": 1,
+        "nombre": "destornillador",
+        "descripcion": "largo= 4pulg ancho= 6mm",
+        "precio": 3,
+        "stock": 5,
+        "rubro": "herramientas",
+        "img": "https://catalogos.devenado.ar//IMG/destornillador-phillips-de-golpe-6-mm-x-150-mm-industrial-total-id29024_1-w640-h360-m1.jpg"
+    },
+
+{
+        "codigo": 2,
+        "nombre": "espatula",
+        "descripcion": "Pintor 2pulg",
+        "precio": 2,
+        "stock": 7,
+        "rubro": "pintureria",
+        "img": "https://homecenterco.scene7.com/is/image/SodimacCO/439139"
+    },
+
+{
+        "codigo": 3,
+        "nombre": "alicate",
+        "descripcion": "Corte digonal",
+        "precio": 7,
+        "stock": 6,
+        "rubro": "electricidad",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWGv7sC8YEkmnoU10CQUJt3dAFnBObVlqILJ695Q7-BZSZY3hnaOyYEhKdqYh7aUYhbwU&usqp=CAU"
+    },
+  
+{
+        "codigo": 4,
+        "nombre": "cinta metrica",
+        "descripcion": "protecion anti-desgaste",
+        "precio": 10,
+        "stock": 3,
+        "rubro": "herramientas",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuDabfsRGkeo9So13Cc2T61jSK0XTAn5_UoQ&usqp=CAU"
+    },
+  
+{
+        "codigo": 5,
+        "nombre": "Clavo Punta Paris",
+        "descripcion": "venta x KG",
+        "precio": 12,
+        "stock": 6,
+        "rubro": "buloneria",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKgVOYCTNmtF7n1e16q3OSVMzyAtf6A5-w2f5IOvaGsPqb0tplFy5ASAfs3ZdHl1pUpI4&usqp=CAU"
+    },
+
+{
+        "codigo": 6,
+        "nombre": "Latex Blanco Interior",
+        "descripcion": "Satinado Lavable X 20 lts",
+        "precio": 61,
+        "stock": 8,
+        "rubro": "pintureria",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDaNvQFIJydTRh5Fk4NXFZTaHuyzYQBzgxGNrjTObprZSVLmKyQFDzP9sLHn8nT4DED-8&usqp=CAU"
+    },
+
+{
+        "codigo": 7,
+        "nombre": "Cable Unipolar 2,5mm",
+        "descripcion": "Aprobado Iram x 50Mts PVC",
+        "precio": 50,
+        "stock": 3,
+        "rubro": "electricidad",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsAepm9mQ2FM4dJK4QHpz0_Zy_wYD4fM0x_nC2tb4VdOk7zWHO4uuTmUBS81kREy8IC8M&usqp=CAU"
+    },
+
+    {
+        "codigo": 8,
+        "nombre": "Tornillo autoperfotante",
+        "descripcion": "T2 Punta Aguja x250Un",
+        "precio": 6,
+        "stock": 5,
+        "rubro": "buloneria",
+        "img": "https://http2.mlstatic.com/D_NQ_NP_619594-MLA32895338265_112019-O.webp"
+    }
+]
