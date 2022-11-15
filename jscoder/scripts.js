@@ -11,8 +11,7 @@
 let inventario = [];
 let dolar = 270;
 const carrito = JSON.parse(localStorage.getItem('carrito')) ?? [];
-const totalCarrito = carrito.reduce((contador, Npieza) => contador + Npieza.precioVenta * Npieza.cantidad, 0);
-
+const mostrarCarrito =JSON.parse(localStorage.getItem('mostrarCarrito'))
 
 
 function tipoCambio() {
@@ -44,17 +43,14 @@ async function basedatosProd() {
   const data = await resp.json();
   inventario = data;
   todosLosProductos();
- imprimirCarrito();
+  imprimirCarrito();
 }
-
 
 
 function todosLosProductos() {
   document.getElementById("seccion-card").innerHTML = ''
   inventario.forEach(el => {
-    if (el.stock > 0)
-
-    {
+    if (el.stock > 0) {
       const idButton = `add-cart${el.codigo}`
       let cards = document.getElementById("seccion-card").innerHTML += `
  <div class="col mb-5">
@@ -78,7 +74,7 @@ function todosLosProductos() {
 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 
 </div>
-             <span class="text-decoration">$${el.precio*dolar}</span>
+             <span class="text-decoration">$${el.precio * dolar}</span>
             
          </div>
      </div>
@@ -92,9 +88,7 @@ function todosLosProductos() {
   carro(inventario);
 }
 
-function categoriasProductos(catego)
-
-{
+function categoriasProductos(catego) {
   document.getElementById("seccion-card").innerHTML = "";
   const categorias = inventario.filter((producto) => producto.rubro === catego);
 
@@ -144,112 +138,175 @@ function categoriasProductos(catego)
 function carro(parametro) {
 
 
-    parametro.forEach((Npieza) => {
+  parametro.forEach((Npieza) => {
 
-        const idButton = `add-cart${Npieza.codigo}`
-        const deleteButton = `borrar${Npieza.codigo}`;
-        document.getElementById(idButton).onclick = () => {
-            let index = carrito.findIndex(e => e.codigo == Npieza.codigo);
-            if (index !== -1){
-                if (Npieza.stock >= Npieza.cantidad)
-                { 
-                    if (Npieza.stock == Npieza.cantidad) 
-                    { Nodisponible(); }
-                    else
-                    { Npieza.cantidad = Npieza.cantidad + 1;
-                      alertAgregado(); }
-               }
-            }
-            else{
-                Npieza.cantidad = 1;
-                carrito.push(Npieza); 
-                alertAgregado();
-            }
+    const idButton = `add-cart${Npieza.codigo}`
+    document.getElementById(idButton).onclick = () => {
+      let index = carrito.findIndex(e => e.codigo == Npieza.codigo);
+      let producto = carrito[index]
 
-            function alertAgregado(){
-              Swal.fire({
-                title: Npieza.nombre,
-                text: 'Agregado al carrito',
-                text: `Cantidad ${Npieza.cantidad}`, 
-                imageUrl: Npieza.img,
-                imageWidth: 200,
-                imageHeight: 200,
-                imageAlt: Npieza.descripcion,
-                showConfirmButton: false,
-                timer: 1500
-              })
-            }
-            function Nodisponible(){
-              Swal.fire({
-                title: `El produto ya no se encuentra disponible`,
-                text:`Intenta en una cantidad menor`, 
-                imageUrl: Npieza.img,
-                imageWidth: 200,
-                imageHeight: 200,
-                imageAlt: Npieza.descripcion,
-                showConfirmButton: false,
-                timer: 1500
-              })
-            }
-            
-         localStorage.setItem("carrito", JSON.stringify(carrito));
-         imprimirCarrito()
-        generarCardsCarrito()
-       
-        
-         
- 
+      if (index !== -1) {
+        if (Npieza.stock >= producto.cantidad) {
+          if (Npieza.stock == producto.cantidad) { swal.fire("El produto ya no se encuentra disponible", "Intenta en una cantidad menor", "error"); }
+          else {
+            Npieza.cantidad = Npieza.cantidad + 1;
+            alertAgregado();
+          }
         }
+      }
+      else {
+        Npieza.cantidad = 1;
+        carrito.push(Npieza);
+        alertAgregado();
+      }
 
-    })};
+      function alertAgregado() {
+        Swal.fire({
+          title: `Agregaste al carrito`,
+          text: `${Npieza.nombre.toUpperCase()} Cantidad ${Npieza.cantidad}`,
+          imageUrl: Npieza.img,
+          imageWidth: 200,
+          imageHeight: 200,
+          imageAlt: Npieza.descripcion,
+          showConfirmButton: false,
+          timer: 1000
+        })
+      }
 
 
-function imprimirCarrito(){
-    const totalCarrito = carrito.reduce((contador, Npieza) => contador + (Npieza.precio*dolar) * Npieza.cantidad, 0);
-    document.getElementById("cart-total").innerHTML = carrito.length  + " - $" + Number(totalCarrito) 
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+      imprimirCarrito()
+      generarCardsCarrito()
+
+
+    }
+
+  })
+};
+
+
+function imprimirCarrito() {
+  const totalCarrito = carrito.reduce((contador, Npieza) => contador + (Npieza.precio * dolar) * Npieza.cantidad, 0);
+  document.getElementById("cart-total").innerHTML = carrito.length + " - $" + Number(totalCarrito)
+mostrarCarrito= carrito.length + " - $" + Number(totalCarrito);
+  localStorage.setItem("mostrarCarrito", JSON.stringify(mostrarCarrito))
 }
- 
- function generarCardsCarrito() {
 
-    document.getElementById("cards-modal").innerHTML = '';
-    carrito.forEach((Npieza) => {
-        const deleteButton = `borrar${Npieza.codigo}`;
-        document.getElementById("cards-modal").innerHTML += `
+function generarCardsCarrito() {
+
+  document.getElementById("cards-modal").innerHTML = '';
+  carrito.forEach((Npieza) => {
+    const deleteButton = `borrar${Npieza.codigo}`;
+    const cantD = `cantD${Npieza.codigo}`;
+    const cantUp = `cantUp${Npieza.codigo}`;
+    document.getElementById("cards-modal").innerHTML += `
         <div class="card d-flex flex-row">
         <div class="d-flex flex-row"><img src="${Npieza.img}" width="80px" style="height:80px" ></div>
         <div class="d-flex flex-column card-body">
-            <h3  class="fs-5">${Npieza.producto}</h3>
-        - Cantidad: ${Npieza.cantidad};
-            - Stock:${Npieza.stock}
-            - Precio Un: $${(Npieza.precio*dolar)}
+            <h3  class="fs-5">${Npieza.nombre.toUpperCase()}
+              : $${(Npieza.precio * dolar)}</h3>
+            - Stock: ${Npieza.stock}
+            <div>
+            - CANTIDAD:
+             <button  id=${cantD}class="bg-danger text-white  rounded btn-xs"  > - </button>
+             ${Npieza.cantidad}
+            <button id=${cantUp} class="bg-success text-white rounded btn">
+            + </button>
+            </div>
             <h3  class="fs-5">Total: $${Npieza.precio * dolar * Npieza.cantidad}</h3>
-          <div><button id=${deleteButton} class="bg-danger">QUITAR</button></div>
+          <div> <button  id=${deleteButton} type="button" class="bg-danger text-white btn" data-bs-dismiss="modal" >Quitar</button>
+          
 
 </div>`
-    
-        
-    }
-    
-    )
-    eliminaritem()
-}
- 
-    function eliminaritem(){
-       carrito.forEach((Npieza) => {
-        const deleteButton = `borrar${Npieza.codigo}`;
- document.getElementById(deleteButton).onclick = () => {
-    let item = carrito.find(e => e.codigo == Npieza.codigo);
-    let index= carrito.indexOf(item)
-            carrito.splice(index,1);
-              imprimirCarrito()
-             generarCardsCarrito()
-             localStorage.setItem("carrito", JSON.stringify(carrito))
-            }    
 
-})}
+
+  }
+
+  )
+  eliminaritem();
+
+}
+
+function eliminaritem() {
+
+  carrito.forEach((Npieza) => {
+    const deleteButton = `borrar${Npieza.codigo}`;
+    const cantD = `cantD${Npieza.codigo}`;
+
+     document.getElementById(deleteButton).onclick = () => {
+      let item = carrito.find(e => e.codigo == Npieza.codigo);
+      let index = carrito.indexOf(item)
+      carrito.splice(index, 1);
+      imprimirCarrito()
+      generarCardsCarrito()
+      localStorage.setItem("carrito", JSON.stringify(carrito)) 
+    } 
+  
+   /*  document.getElementById(cantD).onclick = () => {
+      let item = carrito.find(e => e.codigo == Npieza.codigo);
+        let index = carrito.indexOf(item);
+        let car=carrito[index];
+      if(car.cantidad < 1){
+        producto.cantidad = producto.cantidad-1;
+      }
+      else{carrito.splice(index, 1);}
+      imprimirCarrito()
+      generarCardsCarrito()
+      localStorage.setItem("carrito", JSON.stringify(carrito))
+    }  */
+  })
+}
+
+/*  function menosCantidad() {
+
+  /* carrito.forEach((Npieza) => {
+    const cantD = `cantD${Npieza.codigo}`;
+    /* const cantUp = `cantUp${Npieza.codigo}`;  
+
+  document.getElementById(cantD).onclick = () => {
+    let item = carrito.find(e => e.codigo == Npieza.codigo);
+      let index = carrito.indexOf(item);
+      let producto=carrito[index];
+    if(producto.cantidad < 1){
+      producto.cantidad = producto.cantidad-1;
+    }
+    else{carrito.splice(index, 1);}
+    imprimirCarrito()
+    generarCardsCarrito()
+    localStorage.setItem("carrito", JSON.stringify(carrito))
+  }})
+ 
+} */
 
 function vaciarCarrito() {
-    localStorage.removeItem("carrito", JSON.stringify(carrito));
-    window.location.reload()
-    carro();
+  localStorage.removeItem("carrito", JSON.stringify(carrito));
+  window.location.reload()
+  carro();
+}
+
+function comprar() {
+
+  if (carrito.length == 0) {
+    Swal.fire({
+      title: 'El carrito está vacío',
+      text: 'selecione algun producto',
+      icon: 'error',
+      showConfirmButton: false,
+    })
+  }
+  else {
+    const totalCarrito = carrito.reduce((contador, Npieza) => contador + (Npieza.precio * dolar) * Npieza.cantidad, 0);
+     Swal.fire({
+      title: 'Estamos validando su compra',
+      text: `El Total a pagar es de $${totalCarrito}`,
+      icon: 'success',
+      showConfirmButton: false,
+      timer: 2500
+    })  
+    setTimeout(() => {
+      vaciarCarrito()
+    }, 2000)
+   
+} 
+
 }

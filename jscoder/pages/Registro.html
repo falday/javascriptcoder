@@ -23,32 +23,14 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link" onclick="categoriasProductos('pintureria')">Pintureria</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link"
-                            onclick="categoriasProductos('herramientas')">Herramientas</a></li>
-                    <li class="nav-item"><a class="nav-link" onclick="categoriasProductos('buloneria')">Buloneria</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link"
-                            onclick="categoriasProductos('electricidad')">Electricidad</a></li>
-                    <!-- <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">All Products</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                            </ul>
-                        </li> -->
                 </ul>
                 <div class="d-flex">
                 
-                    <button class="btn  btn-outline-dark" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="generarCardsCarrito()">
-                        <i class="bi-cart-fill me-1"></i>
-                        Cart
-                        <span id="cart-total" class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                    
+                        <button class="btn  btn-outline-dark   " type="button"  data-bs-target="#exampleModal" >
+                            <a class=" text-dark me-1" href="/pages/Registro.html">Login/registro</a>
+                             <!-- <span id="cart-total" class="badge bg-dark text-white ms-1 rounded-pill">0</span> -->
+                    
                     </button>
                     
 
@@ -71,28 +53,21 @@
     <!-- Section-->
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
-            <div id="seccion-card"
-                class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+          
 
-                <!--   <div class="col mb-5">
-                        <div class="card h-100">
+                <form id="inciarSesion">
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Nombre Usuario</label>
+                      <input type="text" class="form-control" id="nombre" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Password</label>
+                      <input type="password" class="form-label" id="password">
+                    </div>
+                    <button  onclick="inciarSesion()">Ingresa</button>
+                    <button type="submit" class="btn btn-primary" onclick="registro()">Registro</button>
                     
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                           
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                          
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                  
-                                    <h5 class="fw-bolder">Special Item</h5>
-                                    <span class="text-decoration">$20.00</span>
-                                   
-                                </div>
-                            </div>
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                            </div> 
-                        </div> -->
+                  </form>     
 
     </section>
 
@@ -106,24 +81,7 @@
     </section>
     
       
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Lleva tus productos a casa</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" id="cards-modal">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="bg-danger btn" data-bs-dismiss="modal" onclick="vaciarCarrito()">Vaciar Carrito</button>
-            </div>
-          </div>
-        </div>
-      </div>
+     
     
 
     <!-- Footer-->
