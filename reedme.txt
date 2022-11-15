@@ -1,0 +1,3 @@
+Segunda Entrega,
+Agrego contenido segun lo visto en la clase 8,9 y uso en el dom
+el proyecto se trata de un Ecomerce de una ferreteria Industrial. 
